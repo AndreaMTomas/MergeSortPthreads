@@ -3,9 +3,10 @@
 #ifndef MERGESORTTHREADED_H_
 #define MERGESORTTHREADED_H_
 
-void merge(int a[], int leftBegin, int leftEnd, int rightBegin, int rigthEnd);
-void merge_sort(int a[], int begin, int end);
-void* merge_sort(void* arg);
+void mergeThreaded(int a[], int leftBegin, int leftEnd, int rightBegin, int rigthEnd);
+void mergeSort(int a[], int begin, int end);
+void* mergeSortThreaded(void* arg);
+void mergeParts(int a[]);
 Data myData;
 
 /**
@@ -106,5 +107,16 @@ void* mergeSortThreaded(void* arg){
     return 0;
 }
 
-
+/**
+ * @brief       Used to merge all the parts of the array one last time.
+ *
+ * @detailed    This function is called in main after joining the threads, this 
+ *              function helps to join all the sorted parts.
+ *
+ * @param        parameter1     Array to be sorted
+ *
+**/
+void mergeParts(int a[]){
+    mergeSort(a, 0, SIZEA - 1);
+}
 #endif

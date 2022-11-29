@@ -36,6 +36,7 @@ int main() {
     for (int i = 0; i < myData.numberOfThreads; i++)
         pthread_join(threads[i], NULL);
 
+    mergeParts(myData.mergeArray);
     andreaTimer.stop();   
     std::cout << "It took " << andreaTimer.elapsed() << " seconds to sort an int array with " 
               << SIZEA << " random values by using " << myData.numberOfThreads << " pthreads." << std::endl;
